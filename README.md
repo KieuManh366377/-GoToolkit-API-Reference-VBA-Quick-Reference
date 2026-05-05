@@ -15,6 +15,17 @@
 
 ---
 
+## Lưu ý sử dụng
+
+' Gọi hàm trả về chuỗi
+Dim ptr As LongPtr
+ptr = HamGoAPI("tham so")
+
+' Đọc chuỗi từ pointer
+Dim s As String
+s = PtrToStr(ptr)  ' helper tự viết
+---
+
 ## Mục lục
 
 - [bcrypt](#bcrypt)
@@ -307,4 +318,4 @@
 
 ---
 
-_Sinh bởi **GoDocGen** `Mode=vba` — 05/05/2026 16:18_
+_Sinh bởi **GoDocGen** `Mode=vba` — 05/05/2026 17:11_
