@@ -17,13 +17,21 @@
 
 ## Lưu ý sử dụng
 
-' Gọi hàm trả về chuỗi
-Dim ptr As LongPtr
-ptr = HamGoAPI("tham so")
+Khi gọi hàm trả về chuỗi từ DLL, kết quả thường là một con trỏ (LongPtr).
+Bạn cần chuyển đổi con trỏ này thành chuỗi VBA bằng hàm helper `PtrToStr`,
+sau đó giải phóng bộ nhớ bằng `FreeString` để tránh rò rỉ.
 
-' Đọc chuỗi từ pointer
+Ví dụ:
+
+```vba
+Dim ptr As LongPtr
 Dim s As String
-s = PtrToStr(ptr)  ' helper tự viết
+
+ptr = GoFunc_GetName(123)   ' gọi hàm DLL, trả về con trỏ
+s = PtrToStr(ptr)           ' đọc chuỗi từ con trỏ
+Call FreeString(ptr)        ' giải phóng bộ nhớ
+```
+
 ---
 
 ## Mục lục
@@ -318,4 +326,4 @@ s = PtrToStr(ptr)  ' helper tự viết
 
 ---
 
-_Sinh bởi **GoDocGen** `Mode=vba` — 05/05/2026 17:11_
+_Sinh bởi **GoDocGen** `Mode=vba` — 05/05/2026 17:13_
